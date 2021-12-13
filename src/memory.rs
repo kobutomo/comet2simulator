@@ -10,7 +10,7 @@ impl Memory {
         self.mm.get(mar as usize)
     }
     pub fn write(&mut self, mar: i16, mdr: i16) {
-        let mm = self.mm.as_mut();
+        let mm = &mut self.mm;
         let op = mm.get_mut(mar as usize);
         let ptr = op.unwrap();
         *ptr = mdr;
