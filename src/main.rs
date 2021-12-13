@@ -1,4 +1,5 @@
 mod memory;
+mod comet;
 
 fn main() {
     let mut mem = memory::new();
