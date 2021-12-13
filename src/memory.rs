@@ -11,11 +11,9 @@ impl Memory {
     }
     pub fn write(&mut self, mar: i16, mdr: i16) {
         let mm = self.mm.as_mut();
-        let ptr = mm.get_mut(mar as usize);
-        match ptr {
-            Some(ptr) => *ptr = mdr,
-            None => (),
-        };
+        let op = mm.get_mut(mar as usize);
+        let ptr = op.unwrap();
+        *ptr = mdr;
     }
 }
 
