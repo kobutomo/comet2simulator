@@ -10,7 +10,7 @@ pub struct Comet {
     eadr: i16,
     fr: [bool; 3],
     sp: i16,
-    main_memory: memory::Memory,
+    pub main_memory: memory::Memory,
 }
 
 impl Comet {
