@@ -18,5 +18,5 @@ impl Memory {
 }
 
 pub fn new() -> Memory {
-    Memory { mm: [0; 64] }
+    Memory { mm: [-1i16; 64] }
 }
