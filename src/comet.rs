@@ -56,4 +56,8 @@ impl Comet {
     pub fn get_fr(&self, i: usize) -> &bool {
         &self.fr[i]
     }
+
+    pub fn proceed(&mut self) {
+        self.main_memory.write(0, self.main_memory.read(0).unwrap() - 1);
+    }
 }
