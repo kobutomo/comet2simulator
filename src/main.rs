@@ -1,6 +1,5 @@
-mod comet;
-mod memory;
-
+use comet2simulator::comet;
+use comet2simulator::memory;
 use std::io;
 use termion::raw::IntoRawMode;
 use tui::backend::TermionBackend;
