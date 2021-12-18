@@ -148,7 +148,7 @@ fn get_mm_items<'a>(
         .collect::<Vec<tui::widgets::ListItem>>()
 }
 
-/// スレッドをブロックする
+/// 実行中のスレッドをブロックする
 pub fn read_event(reader: &mut termion::AsyncReader) -> Event {
     let e: Event;
     loop {
