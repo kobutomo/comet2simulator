@@ -1,4 +1,6 @@
 use crate::memory;
+use crate::instructions;
+
 
 #[derive(Debug, PartialEq)]
 pub struct Comet {
