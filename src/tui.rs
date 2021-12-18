@@ -73,27 +73,27 @@ impl<'comet> Tui<'comet> {
                 .split(chunks[1]);
 
             let items = [
-                tui::widgets::ListItem::new(format!("PR={:X}", comet.get_pr())),
-                tui::widgets::ListItem::new(format!("SP={:X}", comet.get_sp())),
+                tui::widgets::ListItem::new(format!("PR={:04X}", comet.get_pr())),
+                tui::widgets::ListItem::new(format!("SP={:04X}", comet.get_sp())),
                 tui::widgets::ListItem::new(format!(
-                    "FR={:X}{:X}{:X}",
+                    "FR={}{}{}",
                     if *comet.get_fr(0) { 1 } else { 0 },
                     if *comet.get_fr(1) { 1 } else { 0 },
                     if *comet.get_fr(2) { 1 } else { 0 }
                 )),
                 tui::widgets::ListItem::new(format!(
-                    "IR={:X} {:X}",
+                    "IR={:04X} {:04X}",
                     comet.get_ir(0),
                     comet.get_ir(1)
                 )),
-                tui::widgets::ListItem::new(format!("GR0={:X}", comet.get_gr(0))),
-                tui::widgets::ListItem::new(format!("GR1={:X}", comet.get_gr(1))),
-                tui::widgets::ListItem::new(format!("GR2={:X}", comet.get_gr(2))),
-                tui::widgets::ListItem::new(format!("GR3={:X}", comet.get_gr(3))),
-                tui::widgets::ListItem::new(format!("GR4={:X}", comet.get_gr(4))),
-                tui::widgets::ListItem::new(format!("GR5={:X}", comet.get_gr(5))),
-                tui::widgets::ListItem::new(format!("GR6={:X}", comet.get_gr(6))),
-                tui::widgets::ListItem::new(format!("GR7={:X}", comet.get_gr(7))),
+                tui::widgets::ListItem::new(format!("GR0={:04X}", comet.get_gr(0))),
+                tui::widgets::ListItem::new(format!("GR1={:04X}", comet.get_gr(1))),
+                tui::widgets::ListItem::new(format!("GR2={:04X}", comet.get_gr(2))),
+                tui::widgets::ListItem::new(format!("GR3={:04X}", comet.get_gr(3))),
+                tui::widgets::ListItem::new(format!("GR4={:04X}", comet.get_gr(4))),
+                tui::widgets::ListItem::new(format!("GR5={:04X}", comet.get_gr(5))),
+                tui::widgets::ListItem::new(format!("GR6={:04X}", comet.get_gr(6))),
+                tui::widgets::ListItem::new(format!("GR7={:04X}", comet.get_gr(7))),
             ];
             let list = tui::widgets::List::new(items).block(
                 tui::widgets::Block::default()
@@ -104,7 +104,8 @@ impl<'comet> Tui<'comet> {
                 .title("Main Memory")
                 .borders(tui::widgets::Borders::ALL);
 
-            let op = tui::widgets::Paragraph::new("Operation=")
+            let op = comet.get_current_operation();
+            let op = tui::widgets::Paragraph::new(format!("Operation={}", op.unwrap_or("")))
                 .block(
                     tui::widgets::Block::default()
                         .title("Operation")
@@ -142,7 +143,7 @@ fn get_mm_items<'a>(
             tui::widgets::ListItem::new(format!(
                 "{:04X} {:04X}",
                 i,
-                comet.main_memory.read(i as i16).unwrap()
+                comet.main_memory.read(i as u16).unwrap()
             ))
         })
         .collect::<Vec<tui::widgets::ListItem>>()

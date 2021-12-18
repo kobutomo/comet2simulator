@@ -1,15 +1,15 @@
 #[derive(Debug, PartialEq)]
 pub struct Memory {
-    mm: [i16; Memory::SIZE as usize],
+    mm: [u16; Memory::SIZE as usize],
 }
 
 impl Memory {
-    const SIZE: i16 = 64;
+    const SIZE: u16 = 64;
 
-    pub fn read(&self, mar: i16) -> Option<&i16> {
+    pub fn read(&self, mar: u16) -> Option<&u16> {
         self.mm.get(mar as usize)
     }
-    pub fn write(&mut self, mar: i16, mdr: i16) {
+    pub fn write(&mut self, mar: u16, mdr: u16) {
         let mm = &mut self.mm;
         let op = mm.get_mut(mar as usize);
         let ptr = op.unwrap();
@@ -18,5 +18,5 @@ impl Memory {
 }
 
 pub fn new() -> Memory {
-    Memory { mm: [-1i16; 64] }
+    Memory { mm: [0xFFFFu16; 64] }
 }
