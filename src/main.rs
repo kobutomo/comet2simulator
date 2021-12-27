@@ -1,11 +1,14 @@
-use comet2simulator::comet;
-use comet2simulator::tui;
 use std::cell::RefCell;
 use std::env;
 use std::fs::File;
 use std::io;
 use std::io::Read;
 use std::rc::Rc;
+
+pub mod comet;
+pub mod instructions;
+pub mod memory;
+pub mod tui;
 
 fn main() -> Result<(), io::Error> {
     let comet = Rc::new(RefCell::new(comet::Comet::new()));
@@ -33,4 +36,3 @@ fn main() -> Result<(), io::Error> {
     tui.terminal.clear()?;
     Ok(())
 }
-
