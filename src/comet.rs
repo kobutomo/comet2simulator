@@ -45,17 +45,8 @@ impl Comet {
     pub fn get_gr(&self, i: usize) -> &u16 {
         self.gr.get(i).unwrap()
     }
-    pub fn get_mar(&self) -> &u16 {
-        &self.mar
-    }
-    pub fn get_mdr(&self) -> &u16 {
-        &self.mdr
-    }
     pub fn get_sp(&self) -> &u16 {
         &self.sp
-    }
-    pub fn get_eadr(&self) -> &u16 {
-        &self.eadr
     }
     pub fn get_fr(&self, i: usize) -> &bool {
         &self.fr[i]

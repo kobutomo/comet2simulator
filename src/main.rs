@@ -5,10 +5,10 @@ use std::io;
 use std::io::Read;
 use std::rc::Rc;
 
-pub mod comet;
-pub mod instructions;
-pub mod memory;
-pub mod tui;
+mod comet;
+mod instructions;
+mod memory;
+mod tui;
 
 fn main() -> Result<(), io::Error> {
     let comet = Rc::new(RefCell::new(comet::Comet::new()));
